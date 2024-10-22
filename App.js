@@ -4,14 +4,26 @@ import LanguageCard from "./components/LanguageCard";
 
 export default function App() {
   const programLanguage = [
-    { id: 1, lang: "JavaScript" },
-    { id: 2, lang: "Java" },
+    {
+      id: 1,
+      title: "JavaScript",
+      source: require("./assets/js-logo.png"),
+    },
+    {
+      id: 2,
+      title: "Java",
+      source: require("./assets/java.svg"),
+    },
   ];
+
   return (
     <View style={styles.container}>
       <FlatList
+        style={styles.list}
         data={programLanguage}
-        renderItem={({ item }) => <LanguageCard title={item.title} />}
+        renderItem={({ item }) => (
+          <LanguageCard title={item.title} source={item.source} />
+        )}
         keyExtractor={(item) => item.id}
       ></FlatList>
     </View>
@@ -24,10 +36,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: "8px",
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
   },
 });
